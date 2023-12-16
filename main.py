@@ -140,13 +140,15 @@ while running:
         elif apple <= 15:
             game_over_text = font.render("You Just Smashed This Tiny Snake...", True, black)
         elif apple <= 25:
-            game_over_text = font.render("One More Game?", True, black)
+            game_over_text = font.render("Frog May Beat You.", True, black)
         elif apple <= 35:
-            game_over_text = font.render("Ouch!", True, black)
+            game_over_text = font.render("Python!", True, black)
         elif apple <= 40:
             game_over_text = font.render("Anaconda", True, black)
-        else:
+        elif apple <= 50:
             game_over_text = font.render("Titanoboa cerrejonensis", True, black)
+        else:
+            game_over_text = font.render("Jǫrmungandr", True, black)
         screen.blit(game_over_text, ((width - game_over_text.get_width()) // 2, height // 2 - 25))
 
         max_score = max(max_score, apple)
@@ -175,7 +177,9 @@ while running:
     elif 45 <= apple < 47:
         apple_interface = font.render(f"Did you know?: {str(apple)}", True, black)
     elif 47 <= apple <= 49:
-        apple_interface = font.render(f"Snakes have two penises: {str(apple)}", True, black)
+        apple_interface = font.render(f"Snakes have two peXXses: {str(apple)}", True, black)
+    elif 50 <= apple < 52:
+        apple_interface = font.render(f"You can google the picture..: {str(apple)}", True, black)
     else:
         apple_interface = font.render(f"Current Score: {str(apple)}", True, black)
 
