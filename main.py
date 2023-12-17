@@ -177,7 +177,7 @@ while running:
     elif 45 <= apple < 47:
         apple_interface = font.render(f"Did you know?: {str(apple)}", True, black)
     elif 47 <= apple <= 49:
-        apple_interface = font.render(f"Snakes have two peXXses: {str(apple)}", True, black)
+        apple_interface = font.render(f"Snakes have two : {str(apple)}", True, black)
     elif 50 <= apple < 52:
         apple_interface = font.render(f"You can google the picture..: {str(apple)}", True, black)
     else:
