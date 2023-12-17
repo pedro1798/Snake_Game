@@ -171,15 +171,9 @@ while running:
     elif apple != 0 and apple % 10 == 0:
         apple_interface = font.render(f"Speed Up!: {str(apple)}", True, black)
     elif apple == 35:
-        apple_interface = font.render(f"Wow, This snake must swallowed an  elephant!: {str(apple)}", True, black)
-    elif apple != 0 and apple % 13 == 0:
-        apple_interface = font.render(f"Snake on a Plane: {str(apple)}", True, black)
-    elif 45 <= apple < 47:
-        apple_interface = font.render(f"Did you know?: {str(apple)}", True, black)
-    elif 47 <= apple <= 49:
-        apple_interface = font.render(f"Snakes have two : {str(apple)}", True, black)
-    elif 50 <= apple < 52:
-        apple_interface = font.render(f"You can google the picture..: {str(apple)}", True, black)
+        apple_interface = font.render(f"Wow, This snake must swallowed an elephant!: {str(apple)}", True, black)
+    elif 50 <= apple:
+        apple_interface = font.render(f":You Are Legend!", True, black)
     else:
         apple_interface = font.render(f"Current Score: {str(apple)}", True, black)
 
