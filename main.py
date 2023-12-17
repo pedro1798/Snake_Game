@@ -3,14 +3,40 @@
 # Unauthorized reproduction and distribution are prohibited.
 
 import pygame
+import json
 import sys
 import random
+
+def load_high_scores(filename):
+    try:
+        with open(filename, 'r') as json_file:
+            data = json.load(json_file)
+            high_scores = data.get('high_scores', [])
+            print(high_scores)
+            return high_scores
+    except FileNotFoundError:
+        # 파일이 없는 경우 기본적으로 빈 리스트 반환
+        return []
+
+def add_high_score(filename, new_score):
+    high_scores = load_high_scores(filename)
+    high_scores = new_score
+
+    # 최고기록 갱신 후 다시 JSON 파일에 쓰기
+    with open(filename, 'w') as json_file:
+        data = {'high_scores': high_scores}
+        json.dump(data, json_file)
+
+# 예제 파일명: high_scores.json
+
+
 
 def generate_random_color():
     return (random.randint(0, 200), random.randint(0, 200), random.randint(0, 200))
 
 # Pygame 초기화
 pygame.init()
+
 
 # 게임 설정
 width, height = 600, 500
@@ -151,7 +177,11 @@ while running:
             game_over_text = font.render("Jǫrmungandr", True, black)
         screen.blit(game_over_text, ((width - game_over_text.get_width()) // 2, height // 2 - 25))
 
+
         max_score = max(max_score, apple)
+        add_high_score('high_scores.json', max_score)
+        max_score = load_high_scores('high_scores.json')
+
         max_score_text = font.render(f"Max Score is.. {max_score}", True, black)
         screen.blit(max_score_text, ((width - max_score_text.get_width()) // 2, height // 2))
 
@@ -178,6 +208,7 @@ while running:
         apple_interface = font.render(f"Current Score: {str(apple)}", True, black)
 
     screen.blit(apple_interface, ((15, interface_height / 4)))
+
 
     # 화면 업데이트
     pygame.display.flip()
